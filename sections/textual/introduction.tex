@@ -1,0 +1,74 @@
+\chapter[Introdução]{Introdução}
+\label{cap:intro}
+
+Com a chegada da quarta revolução industrial (indústria 4.0), a demanda por monitoramento e controle de processos vem aumentando de forma significativa\cite{klaus}. Esses monitoramentos se dão através de uma rede de sensores, que tradicionalmente, é cabeada. As redes cabeadas apresentam uma maior confiabilidade na conexão, mas apresentam alguns problemas descritos a seguir. O processo de instalação dos cabos possui um custo bastante elevado. Além do custo, redes cabeadas apresentam pouca flexibilidade, o que dificulta a manutenção e futuras expansões da rede\cite{lu2009online}.
+ 
+Uma alternativa que vem ganhando bastante notoriedade são as redes de sensores sem fio (RSSFs). Essas redes carregam várias vantagens em relação a rede cabeada, se destacando o seu baixo custo de instalação, sua flexibilidade e facilidade na implementação e manutenção\cite{gungor2009industrial}. Além dessas vantagens, as RSSFs possuem a capacidade de auto-organização, possibilidade de processamento local e a instalação em locais de difícil acesso ou até mesmo em objetos que se movem constantemente\cite{gomes2017estimaccao}.
+
+Uma RSSF é formada por nós, que podem ser equipados tanto com sensores, quanto com atuadores. Esses nós possuem capacidade de comunicação sem fio (radiofrequência) e em alguns casos, podem ter capacidade de processamento. No caso dos nós com capacidade de processamento, eles conseguem realizar algumas tarefas como o pré-processamento nos dados coletados antes do envio para um nó central(também chamado de nó sorvedouro), dessa forma é possível que o canal de comunicação seja utilizado de forma mais eficiente \cite{sousa2011desafios}. No caso das redes de sensores sem fio industriais(RSSFIs), os sensores são instalados em equipamentos industriais, eles podem realizar tarefas como o monitoramento de temperatura, pressão e vibração\cite{delgado2013impact}. Geralmente, essas informações são encaminhadas através do canal sem fio até uma central, que faz todo esse monitoramento. Com a coleta desses dados, é possível fazer previsões de falhas, observar máquinas que apresentem algum tipo de problema, evitando assim maiores prejuízos\cite{gungor2009industrial}. 
+
+Apesar de todas essas vantagens, as RSSFs carregam uma série de desafios que devem ser levados em conta, o principal deles é a falta de confiabilidade no canal de comunicação. As redes sem fio utilizam um meio de comunicação não confiável, o que pode ser agravado por interferências eletromagnéticas e problemas de atenuação relacionados a sombreamento e multipercurso. Também deve ser levado em conta que esses nós possuem restrições, como baixo poder de processamento e baixa taxa de transmissão\cite{gomes2017estimaccao}. 
+
+No ambiente industrial, esses problemas são agravados. Nesse tipo de ambiente, é possível encontrar várias fontes de interferências, como equipamentos de solda, forno micro-ondas e outros equipamentos que utilizam comunicação sem fio\cite{gomes2014desafios}. Além disso, existem vários objetos metálicos e em grade parte, esses objetos estão se movendo, podendo assim ocasionar uma atenuação do sinal nesse tipo de ambiente\cite{gomes2012correlation}. Esses problemas dificultam a garantia de qualidade de serviço (QoS). Aplicações industriais requerem alta taxa de entrega de pacotes e alta disponibilidade, garantir esse requisitos é de suma importância para implementação de uma RSFFI\cite{gomes2017estimaccao}.
+
+\section{Justificativa e Relevância do Trabalho}
+\label{sec:justificativa}
+
+Em \cite{tuset2020evaluating} foi realizado um experimento no período de 99 dias em um ambiente industrial real, em que foi possível avaliar o desempenho de comunicação para 11 nós finais, nas três modulações definidas pelo IEEE 802.15.4g, são elas: SUN-FSK(\textit{Frequency-shift keying}), SUN-OQPSK(\textit{Offset Quadrature Phase-shift keying}) e 
+SUN-OFDM(\textit{Orthogonal Frequency Division Multiplexing}). Foi observado que ocorrem variações temporais no desempenho de comunicação de cada modulação e nenhuma modulação consegue individualmente entregar a melhor qualidade de comunicação durante 100 \% do tempo para qualquer um dos nós finais. Foi gerado um conjunto de dados que foi utilizado em \cite{gomes2020improving} para propor mecanismos de diversidade de modulação. Esses mecanismos conseguem identificar a qualidade dos enlaces para cada modulação e escolher a melhor em cada período de tempo, melhorando a taxa da entrega de pacotes e reduzindo o consumo de energia, por meio da redução do número de retransmissões de pacotes. 
+
+Levando em conta os desafios para prover qualidade de serviço em redes sem fio, principalmente em ambientes desafiadores, como a industria, este trabalho tem como objetivo dar continuidade aos dois trabalhos mencionados anteriormente, por meio da proposição de melhorias nos mecanismos de diversidade de modulação para melhorar a qualidade de serviços das redes sem fio que operam em bandas Sub-GHz.   
+
+\section{Objetivos}
+\label{sec:objetivo}
+
+\subsection{Objetivo Geral}
+\label{subsec:objgeral}
+
+Este trabalho tem como objetivo propor alternativas para melhorar a qualidade de serviços das redes de sensores sem fio por meio de novos mecanismos para escolha dinâmica de modulação, se baseando na emenda IEEE 802.15.4g.
+
+\subsection{Objetivos Específicos}
+\label{subsec:objespecificos}
+
+\begin{enumerate}
+    \item Estudar as características dos esquemas de modulação do IEEE 802.15.4g e entender suas vantagens e desvantagens e em que situações cada modo de operação pode ser mais adequado;
+    \item  Estudar o \textit{dataset} descrito em \cite{tuset2020evaluating} para verificar o desempenho dos três esquemas de modulação avaliados em um ambiente industrial;
+    \item Propor algoritmos e mecanismos para estimação de qualidade do enlace, aplicados à identificação das  melhores modulações a serem usadas pelos nós em cada momento;
+    \item Avaliar os mecanismos propostos por meio de simulações.
+\end{enumerate}
+
+\section{Metodologia}
+\label{sec:metodologia}
+
+A metodologia utilizada neste trabalho foi composta pelas seguintes etapas: 
+
+\begin{enumerate}
+    \item Levantamento bibliográfico: Nessa etapa foi realizado um estudo de caráter bibliográfico utilizando dois trabalhos que serviram de base\cite{tuset2020evaluating}\cite{gomes2020improving}, com o intuito de compreender aspectos importantes da comunicação sem fio, como o padrão 802.15.4 funciona, padrão esse destinado a redes sem fio pessoais de baixas taxas de transmissão e quais vantagens do uso desse padrão nas redes de sensores. 
+    Em seguida, foi realizado um estudo detalhado sobre aspectos importantes para a escolha de modulação a ser usada (ex: presença ou não de fontes de interferência, \textit {link budget} fornecido por cada modulação, etc).
+ 
+    \item  Nessa etapa foi realizada uma análise detalhada do \textit{dataset} descrito em \cite{tuset2020evaluating}. Esse dataset contêm informações referentes a um experimento realizado em um ambiente industrial no período de 99 dias. No experimento, foi implantada uma rede de sensores que utiliza as modulações propostas na emenda 'g' do padrão 802.15.4. Essa análise foi feita com o objetivo de entender os fatores que ocasionaram variações de desempenho para cada modulação no decorrer do tempo. %No experimento foi possível verificar variações temporais no desempenho de comunicação de cada modulação, mostrando que nenhuma modulação agindo individualmente provê a melhor qualidade de comunicação em cem por cento do tempo para qualquer um dos nós finais.
+    
+    \item Foi feito um estudo no simulador descrito em \cite{gomes2020improving}, que usa as informações do \textit{dataset} para propor estratégias de seleção de modulação adaptativa, com o objetivo de obter a maior taxa de entrega possível. Das estratégias propostas, a estratégia 3M obteve os melhores resultados, a mesma utiliza as três modulações disponíveis no padrão 802.15.g SUN. 
+    
+    \item Proposta de uma nova estratégia: Nessa etapa foi proposto uma nova estrátegia chamada de 3Mnew, que é uma evolução da 3M\cite{gomes2020improving}. Na estratégia 3M, é utilizado o ARR(\textit{ACK received rate}) para estimar a qualidade do enlace. Observou-se que apesar de ser mais rápida, essa estimação é um pouco falha devido a possibilidade de perca dos pacotes ACK. %A estratégia 3Mnew incrementa uma análise no receptor, que utiliza a taxa de recepção de pacotes(PRR).%
+    
+    \item Análise detalhada dos estimadores: Nessa etapa foi feita uma análise dos 2 estimadores de qualidade de enlace, com o objetivo de verificar o comportamento dos mesmos e se estão conseguindo estimar com precisão.
+    
+    \item Nessa etapa foi proposta uma nova abordagem que combina os dois estimadores para formar um estimador mais complexo. 
+\end{enumerate}
+
+\section{Organização do Documento}
+\label{sec:organizacao}
+
+Os capítulos seguintes estão organizados da seguinte maneira:
+
+O Capítulo 2 apresenta a fundamentação teórica utilizada 
+como base para desenvolvimento deste trabalho. São apresentado 
+os desafios das RSSFIs, o padrão IEEE 802.15.4g, as três modulações que foram incorporadas ao padrão, o conceito de diversidade de modulação e os trabalhos que serviram de base para essa pesquisa.
+
+O capítulo 3 apresenta os resultados obtidos, onde foi proposto um novo mecanismo de estimação de qualidade do enlace. 
+
+O capítulo 4 apresenta as considerações finais e
+ sugestões de trabalhos futuros.
+
+

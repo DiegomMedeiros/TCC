@@ -1,0 +1,19 @@
+\chapter{Considerações Finais}
+\label{cap:conlusao}
+
+Este trabalho propôs duas novas estratégias de estimação de qualidade de enlace, que foram aplicadas em um mecanismo de seleção de modulação em redes IEEE 802.15.4g. Os resultados obtidos mostram que a primeira estratégia proposta, 3M\textit{new}, consegue fornecer uma estimativa de qualidade de enlace superior em relação ao estimador do estado da arte (3M). A maior contribuição dessa estratégia foi a possibilidade de obter uma melhor estimação da qualidade do enlace, usando as informações calculadas no receptor. 
+
+A partir desta estimação mais precisa, foi possível a criação de uma estratégia híbrida, a 3Mh, que utiliza de forma híbrida os valores do ARR combinados com o PRR utilizando pesos iguais. A estratégia 3Mh conseguiu um PDR superior em 9 dos 11 nós e um PDR global superior em relação as estratégias 3M e 3M\textit{new}. 
+
+\section{Sugestões para Trabalhos Futuros}
+
+Como sugestões de trabalhos futuros:
+\begin{itemize}
+    \item Avaliar outros mecanismos de estimação de qualidade do enlace;
+    \item O uso de outros protocolos para a escolha dinâmica de modulação;
+    \item Realização de testes em outros cenários, bem como a realização de novos experimentos em ambientes industriais reais;
+    \item Fazer os comparativos do PDR médio e RNP médio, talvez seja possível criar um preditor, achando uma correlação entre as duas variáveis. Caso essa correlação seja encontrada, é possível usar uma variável para prever a outra;
+    \item A partir dos valores de similaridade, alterar os pesos utilizados no 3Mh. Utilizando uma estratégia inteligente que consiga usar o melhor estimador em determinando momento, alterando o peso do estimador com melhor precisão.  
+\end{itemize}
+
+
